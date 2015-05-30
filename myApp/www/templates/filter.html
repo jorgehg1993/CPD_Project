@@ -1,0 +1,28 @@
+<div class="modal">
+    <ion-header-bar>
+        <h1 class="title">Filter/Order the results</h1>
+    </ion-header-bar>
+    <ion-content>
+        <form ng-submit="saveSettings()">
+            <div class="list">
+                <label class="item item-divider item-calm">
+                    <span>Filter by country</span>
+                </label>
+                <label class="item item-input item-select">
+                    <div class="input-label">Country</div>
+                    <select ng-model="selectedCountry" ng-options="country.name for country in countries">
+                    </select>
+                </label>
+                <label class="item item-divider item-calm">
+                    <span>Order by </span>
+                </label>
+                <ion-radio ng-model="order.value" ng-change="applyFilter()" value="location">Nearest</ion-radio>
+                <ion-radio ng-model="order.value" ng-change="applyFilter()" value="need">What I need</ion-radio>
+                <ion-radio ng-model="order.value" ng-change="applyFilter()" value="offer">What I'm offering</ion-radio>
+                <label class="item">
+                    <button class="button button-block button-calm">Close popup</button>
+                </label>
+            </div>
+        </form>
+    </ion-content>
+</div>

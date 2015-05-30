@@ -1,0 +1,80 @@
+/* Empty. Add your own CSS if you like */
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+
+.intro .slider {
+    height: 100%;
+}
+.intro .slider-slide {
+    padding-top: 80px;
+    color: #000;
+    background-color: #fff;
+    text-align: center;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+}
+.intro #logo {
+    margin: 30px 0px;
+}
+.intro #list {
+    width: 170px;
+    margin: 30px auto;
+    font-size: 15px;
+}
+.intro #list ol {
+    margin-top: 30px;
+}
+.intro #list ol li {
+    text-align: left;
+    list-style: decimal;
+    margin: 10px 0px;
+}
+.intro .col-demo .col {
+    padding: 5px;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    background: #f7f7f7;
+    text-align: center;
+}
+.intro .ionicons-demo li {
+    display: inline-block;
+    padding: 2px;
+    font-size: 32px;
+}
+
+.media-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px; height: 0; overflow: hidden;
+}
+ 
+.media-container iframe,
+.media-container object,
+.media-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.youtube-image {
+  position: relative;
+}
+
+.youtube-image p {
+  background-color: black;
+  bottom: 5%;
+  right: 1%;
+  color: white;
+  padding: 0.25em 0.75em;
+  position: absolute;
+}
+
+.item-calm h2 {
+    color: #fff;
+}
+
+.item-calm p {
+    color: #fff;
+}

@@ -1,0 +1,88 @@
+<script id="my-popover.html" type="text/ng-template">
+    <ion-popover-view>
+        <ion-header-bar>
+            <h1 class="title">My Popover Title</h1>
+        </ion-header-bar>
+        <ion-content>
+            <div class="list">
+                <a class="item" href="">
+              Learn Ionic
+            </a>
+                <a class="item" href="">
+              Documentation
+            </a>
+                <a class="item" href="">
+              Showcase
+            </a>
+                <a class="item" href="">
+              Submit an Issue
+            </a>
+                <a class="item" href="">
+              Github Repo
+            </a>
+            </div>
+        </ion-content>
+    </ion-popover-view>
+</script>
+
+<ion-view title="Javascript Features">
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button menu-toggle="right" class="button button-icon icon ion-search"></button>
+    </ion-nav-buttons>
+
+
+
+    <ion-content class="padding" locking="true">
+        <ion-refresher on-refresh="doRefresh()" pulling-text="Text while Pulling..." refreshing-text="Text while refreshing...">
+        </ion-refresher>
+        <button class="button button-full button-positive" ng-click="openPopover($event)">
+            Press to for Popover
+        </button>
+
+        <button class="button button-full button-positive" ng-click="actionsheet()">
+            Call Action Sheet
+        </button>
+        <button class="button button-full button-positive" ng-click="backdrop()">
+            Backdrop Example
+        </button>
+
+        <button class="button button-full button-positive">
+            Pull Down to see Refresher
+        </button>
+
+        <button on-hold="onEvent('You Held the Button')" class="button button-full button-positive">
+            Try to Hold Me
+        </button>
+        <button on-tap="onEvent('You Tapped the Button')" class="button button-full button-positive">
+            Try to Tap Me
+        </button>
+        <button on-touch="onEvent('You Touched the Button')" class="button button-full button-positive">
+            Try to Touch Me
+        </button>
+        <button on-release="onEvent('You Released the Button')" class="button button-full button-positive">
+            Try to Release Me
+        </button>
+        <button class="button button-full button-positive" ng-click="showLoading()">
+            Press to Show Loading
+        </button>
+        <button class="button button-full button-positive" ng-click="login()">
+            Press to Show Modal with Login Example
+        </button>
+        <div class="button-bar">
+            <button class="button button-dark" ng-click="showPopup()">
+                show
+            </button>
+            <button class="button button-primary" ng-click="showConfirm()">
+                Confirm
+            </button>
+            <button class="button button-positive" ng-click="showAlert()">
+                Alert
+            </button>
+        </div>
+
+    </ion-content>
+
+</ion-view>

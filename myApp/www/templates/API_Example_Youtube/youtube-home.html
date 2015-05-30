@@ -1,0 +1,32 @@
+<ion-view title="Latest posts">
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+    <ion-content class="padding">
+        <ion-refresher on-refresh="doRefresh()" pulling-text="Text while Pulling..." refreshing-text="Text while refreshing...">
+        </ion-refresher>
+
+        <div class="row responsive-sm" ng-repeat="rows in DataAPI">
+            <div class="col" ng-repeat="item in rows">
+                <a href="#/app/latestServices/home-detail/{{item.id}}" style="text-decoration: none;">
+                    <div class="card">
+                        <div class="item item-calm item-avatar item-calm-white">
+                            <img src="img/avatars/avatar.jpg">
+                            <h2><b>{{item.title}}</b></h2>
+                            <p>Location: {{item.location}}<p>
+                            <p>Date posted: {{item.post_date}}</p>
+                        </div>
+                        <div class="item item-text-wrap">
+                            <b>What I need: </b>
+                            <span>{{item.request}}</span>
+                        </div>
+                         <div class="item item-text-wrap">
+                            <b>What I offer: </b>
+                            <span>{{item.offer}}</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

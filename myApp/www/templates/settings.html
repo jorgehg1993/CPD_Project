@@ -1,0 +1,18 @@
+<ion-view title="Settings">
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+    <ion-content class="padding">
+        <div class="row">
+            <div class="col">
+                <div class="list">
+                    <div class="item item-divider item-calm">
+                        Distance unit
+                    </div>
+                    <ion-radio ng-model="distance.units" ng-change="saveUnit()" value="km">Kilometers/Meters</ion-radio>
+                    <ion-radio ng-model="distance.units" ng-change="saveUnit()" value="miles">Miles/Feet</ion-radio>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

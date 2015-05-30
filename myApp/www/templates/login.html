@@ -1,0 +1,47 @@
+<ion-view title="Login">
+  <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <ion-content class="padding">
+      
+
+      <div class="list">
+        <div class="item item-divider item-dark">
+          Login with your Swapper account
+        </div>
+        <label class="item item-input">
+          <span class="input-label">Username</span>
+          <input type="text" ng-model="loginData.username">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Password</span>
+          <input type="password" ng-model="loginData.password">
+        </label>
+        <label class="item">
+          <button class="button button-block button-calm" type="submit">Log in</button>
+        </label>
+        <div class="item">
+          <div align=center><a href="#/app/forgot">Forgot Password</a></div>
+        </div>
+      </div>
+
+      <div class="list">
+        <div class="item item-divider item-dark">
+          Login with your Facebook account
+        </div>
+        <label class="item">
+          <button class="button button-block button-positive icon-left ion-social-facebook" type="submit">Log in with Facebook</button>
+        </label>
+      </div>
+
+      <div class="list">
+        <div class="item item-divider item-dark">
+          Don't have an account? Create one!
+        </div>
+        <label class="item">
+          <button class="button button-block button-calm" ng-click="register()" type="submit">Register</button>
+        </label>
+      </div>
+  </ion-content>
+</ion-view>
+
