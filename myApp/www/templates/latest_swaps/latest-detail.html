@@ -1,0 +1,31 @@
+<ion-view title="Detail">
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+
+    <ion-content has-header="true" padding="true">
+        <div class="card">
+            <div class="item item-calm item-avatar item-calm-white">
+                <img src="img/avatars/avatar.jpg">
+                <h2><b>{{swap.title}}</b></h2>
+                <p>Location: <span ng-hide="swap.country === 'Worldwide'">{{swap.city}}, {{swap.state}}, </span>{{swap.country}}<p>
+                <p>Date posted: {{swap.creation_date | date:"dd MMM yyyy 'at' HH:mm"}}</p>
+            </div>
+            <div class="item item-text-wrap">
+                <b>What I need: </b>
+                <span>{{swap.request}}</span>
+            </div>
+            <div class="item item-text-wrap">
+                <b>What I offer: </b>
+                <span>{{swap.offer}}</span>
+            </div>
+            <div class="item item-text-wrap">
+                <b>Description: </b>
+                <span>{{swap.description}}</span>
+            </div>
+            <div class="item item-text-wrap">
+                <a class="button button-calm button-block" href="#/app/latestServices/home-contact/{{swap._ownerId}}">Contact</a>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

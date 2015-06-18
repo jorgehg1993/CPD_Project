@@ -10,39 +10,39 @@
             <div class="col">
                 <div class="card">
                     <div class="item item-avatar">
-                        <img align=center src="img/avatars/avatar.jpg"> 
-                        <h2>Sacredcow</h2>
+                        <img align=center ng-src="{{profileImg}}"> 
+                        <h2>{{$root.user.username}}</h2>
                         <p>Profile picture</p>
                     </div>
                 	<div class="item item-divider">
 						Name
 					</div>
                     <div class="item item-text-wrap">
-                        Jorge Hernandez Gomez
+                        {{$root.user.first_name}} {{$root.user.last_name}}
                     </div>
                     <div class="item item-divider">
 						Email address
 					</div>
                     <div class="item item-text-wrap">
-                        sacredcow2.0@gmail.com
+                        {{$root.user.email}}
                     </div>
                     <div class="item item-divider">
                         Address
                     </div>
                     <div class="item item-text-wrap">
-                        San Felipe 56, Queretaro, Qro, 76180
+                        {{$root.user.address}}
                     </div>
                     <div class="item item-divider">
                         Phone
                     </div>
                     <div class="item item-text-wrap">
-                        +436765062949
+                        {{$root.user.phone}}
                     </div>
                     <div class="item item-divider">
                         Country
                     </div>
                     <div class="item item-text-wrap">
-                        Mexico
+                        {{$root.user.country}}
                     </div>
                 </div>
             </div>

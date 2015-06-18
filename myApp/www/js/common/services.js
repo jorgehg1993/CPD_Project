@@ -1,6 +1,6 @@
 angular.module('ionizer.services', [])
 
-.factory('ContactedService', ['$http', '$q', 'APIFunctions', 'utility', function($http, $q, APIFunctions, utility) {
+.factory('ContactedService', ['$http', '$q', 'utility', function($http, $q, utility) {
     var services = [
         {
             id: "1",
@@ -78,70 +78,6 @@ angular.module('ionizer.services', [])
     return {
         getSwaps: function(){
             return services;
-        }
-    }
-}])
-
-.factory('APIFunctions', ['utility', function(utility) {
-
-    var getPropByString = utility.getPropByString;
-
-    return {
-        // function to create URL for API Call
-        makeURL: function(settings) {
-
-            var returnData = {};
-            returnData.URL = settings.URL.baseURL();
-            returnData.params = {};
-
-            for (var element in settings.URL.params) {
-                if (settings.URL.params.hasOwnProperty(element)) {
-                    returnData.params[element] = settings.URL.params[element]();
-                }
-            }
-
-
-            //_params["callback"] = 'JSON_CALLBACK';
-
-            return returnData;
-        },
-        // prepare the Return Data based on the Settings
-        prepareData: function(data, settings) {
-
-            if (settings.Type == 'detail') {
-
-                if (!getPropByString(data, settings.API_DataProperty) || getPropByString(data, settings.API_DataProperty).length == 0) {
-                    var originalData = data;
-                } else {
-                    var originalData = getPropByString(data, settings.API_DataProperty)
-                }
-
-                var returnData = {};
-                var originalData = getPropByString(data, settings.API_DataProperty)
-                var fullData = data
-
-                for (var element in settings.returnElements) {
-                    if (settings.returnElements.hasOwnProperty(element)) {
-                        returnData[element] = settings.returnElements[element](originalData,fullData);
-                    }
-                }
-
-            } else {
-                var returnData = [];
-                var originalData = getPropByString(data, settings.API_DataProperty)
-                var fullData = data
-
-                for (var i = 0; i < originalData.length; i++) {
-                    returnData[i] = {};
-                    for (var element in settings.returnElements) {
-                        if (settings.returnElements.hasOwnProperty(element)) {
-                            returnData[i][element] = settings.returnElements[element](originalData[i],fullData);
-                        }
-                    }
-                }
-            }
-
-            return returnData;
         }
     }
 }])
@@ -234,13 +170,13 @@ angular.module('ionizer.services', [])
 
 .factory('Countries', function(){
     var countries = [ 
-        {"name": "WorldWide"},
+        {"name": "Worldwide"},
         {"name": "Afghanistan", "code": "AF"}, 
         {"name": "Åland Islands", "code": "AX"}, 
         {"name": "Albania", "code": "AL"}, 
         {"name": "Algeria", "code": "DZ"}, 
         {"name": "American Samoa", "code": "AS"}, 
-        {"name": "AndorrA", "code": "AD"}, 
+        {"name": "Andorra", "code": "AD"}, 
         {"name": "Angola", "code": "AO"}, 
         {"name": "Anguilla", "code": "AI"}, 
         {"name": "Antarctica", "code": "AQ"}, 

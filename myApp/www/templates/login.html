@@ -10,15 +10,15 @@
           Login with your Swapper account
         </div>
         <label class="item item-input">
-          <span class="input-label">Username</span>
-          <input type="text" ng-model="loginData.username">
+          <span class="input-label">Email</span>
+          <input type="text" ng-model="loginData.email">
         </label>
         <label class="item item-input">
           <span class="input-label">Password</span>
           <input type="password" ng-model="loginData.password">
         </label>
         <label class="item">
-          <button class="button button-block button-calm" type="submit">Log in</button>
+          <button class="button button-block button-calm" ng-click="login()">Log in</button>
         </label>
         <div class="item">
           <div align=center><a href="#/app/forgot">Forgot Password</a></div>
@@ -30,7 +30,7 @@
           Login with your Facebook account
         </div>
         <label class="item">
-          <button class="button button-block button-positive icon-left ion-social-facebook" type="submit">Log in with Facebook</button>
+          <button class="button button-block button-positive icon-left ion-social-facebook" ng-click="fbLogin()">Log in with Facebook</button>
         </label>
       </div>
 

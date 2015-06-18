@@ -1,0 +1,41 @@
+<ion-view title="Search swaps">
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+    <!--<ion-nav-buttons side="right">
+        <button menu-toggle="right" class="button button-clear" ng-click="showFilter()">Order/Filter</button>
+    </ion-nav-buttons>-->
+    <ion-content class="padding">
+        <div class="bar bar-header item-input-inset">
+            <label class="item-input-wrapper" id="search-input">
+                <i class="icon ion-ios7-search placeholder-icon"></i>
+                <input type="search" ng-model="query" placeholder="Search" ng-keyup="$event.keyCode == 13 && searchSwaps(query)">
+            </label>
+        </div>
+        <div class="row responsive-sm" ng-repeat="rows in swaps" ng-show="resultsFound">
+            <div class="col" ng-repeat="item in rows"> 
+                <a href="#/app/searchServices/home-detail/{{item._id}}" style="text-decoration: none;">
+                    <div class="card">
+                        <div class="item item-calm item-avatar item-calm-white">
+                            <img src="img/avatars/avatar.jpg">
+                            <h2><b>{{item.title}}</b></h2>
+                            <p>Location: <span ng-hide="item.country === 'Worldwide'">{{item.city}}, {{item.state}}, </span>{{item.country}}<p>
+                            <p>Date posted: {{item.creation_date | date:"dd MMM yyyy 'at' HH:mm"}}</p>
+                        </div>
+                        <div class="item item-text-wrap">
+                            <b>What I need: </b>
+                            <span>{{item.request}}</span>
+                        </div>
+                         <div class="item item-text-wrap">
+                            <b>What I offer: </b>
+                            <span>{{item.offer}}</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="msg-container" ng-hide="resultsFound">
+            <h2>No results where found</h2>
+        </div>
+    </ion-content>
+</ion-view>

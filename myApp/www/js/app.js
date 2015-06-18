@@ -1,7 +1,11 @@
-angular.module('ionizer', ['ionic', 'ngCordova', 'ionizer.controllers', 'ionizer.services', 'ionizer.rottencontroller', 'ionizer.food2forkcontroller', 'ionizer.wordpressjsonapicontroller', 'ionizer.youtubecontroller', 'ionizer.featuresdemocontroller'])
+angular.module('ionizer', ['ionic', 'ngOpenFB', 'ngCordova', 'ionizer.controllers', 'ionizer.services', 'ionizer.searchswapscontroller', 'ionizer.myswapscontroller', 'ionizer.latestswapscontroller', 'ionizer.featuresdemocontroller'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, ngFB, $window) {
     $ionicPlatform.ready(function() {
+        ngFB.init({
+            appId: '413104378894077',
+            tokenStore: $window.localStorage
+        });
         //localStorage.clear();
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -47,7 +51,7 @@ angular.module('ionizer', ['ionic', 'ngCordova', 'ionizer.controllers', 'ionizer
         abstract: true,
         views: {
             'menuContent': {
-                templateUrl: 'templates/API_Example_Youtube/youtube-main.html'
+                templateUrl: 'templates/latest_swaps/latest-main.html'
             }
         }
     })
@@ -57,19 +61,30 @@ angular.module('ionizer', ['ionic', 'ngCordova', 'ionizer.controllers', 'ionizer
         url: '/home',
         views: {
             'latest': {
-                templateUrl: 'templates/API_Example_Youtube/youtube-home.html',
-                controller: 'YoutubeHomeCtrl'
+                templateUrl: 'templates/latest_swaps/latest-home.html',
+                controller: 'LatestSwapsCtrl'
             }
         }
     })
 
     // state for the detail page of Home Page using an reusable Controller & Template
     .state('app.latestServices.home-detail', {
-        url: '/home-detail/:dataID',
+        url: '/home-detail/:id',
         views: {
             'latest': {
-                templateUrl: 'templates/API_Example_Youtube/youtube-detail.html',
-                controller: 'YoutubeDetailCtrl'
+                templateUrl: 'templates/latest_swaps/latest-detail.html',
+                controller: 'LatestSwapsDetailCtrl'
+            }
+        }
+    })
+
+    // state for the detail page of Home Page using an reusable Controller & Template
+    .state('app.latestServices.home-contact', {
+        url: '/home-contact/:receiverId',
+        views: {
+            'latest': {
+                templateUrl: 'templates/latest_swaps/latest-contact.html',
+                controller: 'LatestSwapsContactsCtrl'
             }
         }
     })
@@ -80,7 +95,7 @@ angular.module('ionizer', ['ionic', 'ngCordova', 'ionizer.controllers', 'ionizer
         abstract: true,
         views: {
             'menuContent': {
-                templateUrl: 'templates/API_Example_Rotten/rotten-main.html'
+                templateUrl: 'templates/search_swaps/search-main.html'
             }
         }
     })
@@ -91,19 +106,19 @@ angular.module('ionizer', ['ionic', 'ngCordova', 'ionizer.controllers', 'ionizer
         url: '/home',
         views: {
             'search': {
-                templateUrl: 'templates/API_Example_Rotten/rotten-home.html',
-                controller: 'RottenHomeCtrl'
+                templateUrl: 'templates/search_swaps/search-home.html',
+                controller: 'SearchSwapsHomeCtrl'
             }
         }
     })
 
     // state for the detail page of Home Page using an reusable Controller & Template
     .state('app.searchServices.home-detail', {
-        url: '/home-detail/:dataID',
+        url: '/home-detail/:id',
         views: {
             'search': {
-                templateUrl: 'templates/API_Example_Rotten/rotten-detail.html',
-                controller: 'RottenDetailCtrl'
+                templateUrl: 'templates/search_swaps/search-detail.html',
+                controller: 'SearchSwapsDetailCtrl'
             }
         }
     })
@@ -114,7 +129,7 @@ angular.module('ionizer', ['ionic', 'ngCordova', 'ionizer.controllers', 'ionizer
         abstract: true,
         views: {
             'menuContent': {
-                templateUrl: 'templates/API_Example_WordpressJSONAPI/wordpressjsonapi-main.html'
+                templateUrl: 'templates/my_swaps/myswaps-main.html'
             }
         }
     })
@@ -126,7 +141,7 @@ angular.module('ionizer', ['ionic', 'ngCordova', 'ionizer.controllers', 'ionizer
         url: '/home',
         views: {
             'myServices': {
-                templateUrl: 'templates/API_Example_WordpressJSONAPI/wordpressjsonapi-home.html',
+                templateUrl: 'templates/my_swaps/myswaps-home.html',
                 controller: 'MySwapsCtrl'
             }
         }
@@ -134,20 +149,20 @@ angular.module('ionizer', ['ionic', 'ngCordova', 'ionizer.controllers', 'ionizer
 
     // state for the detail page of Home Page using an reusable Controller & Template
     .state('app.myServices.home-detail', {
-        url: '/home-detail/:dataID',
+        url: '/home-detail/:id',
         views: {
             'myServices': {
-                templateUrl: 'templates/API_Example_WordpressJSONAPI/wordpressjsonapi-detail.html',
+                templateUrl: 'templates/my_swaps/myswaps-detail.html',
                 controller: 'MySwapsDetailCtrl'
             }
         }
     })
 
     .state('app.myServices.home-edit', {
-        url: '/home-edit/:dataID',
+        url: '/home-edit/:id',
         views: {
             'myServices': {
-                templateUrl: 'templates/API_Example_WordpressJSONAPI/wordpressjsonapi-edit.html',
+                templateUrl: 'templates/my_swaps/myswaps-edit.html',
                 controller: 'MySwapsEditCtrl'
             }
         }
@@ -157,7 +172,7 @@ angular.module('ionizer', ['ionic', 'ngCordova', 'ionizer.controllers', 'ionizer
         url: '/home-create',
         views: {
             'myServices': {
-                templateUrl: 'templates/API_Example_WordpressJSONAPI/wordpressjsonapi-create.html',
+                templateUrl: 'templates/my_swaps/myswaps-create.html',
                 controller: 'MySwapsCreateCtrl'
             }
         }
@@ -269,34 +284,17 @@ angular.module('ionizer', ['ionic', 'ngCordova', 'ionizer.controllers', 'ionizer
 
 })
 
-.config(function($httpProvider) {
-    $httpProvider.interceptors.push(function($rootScope) {
-        return {
-            request: function(config) {
-                $rootScope.$broadcast('loading:show')
-                return config
-            },
-            response: function(response) {
-                $rootScope.$broadcast('loading:hide')
-                return response
-            }
-        }
-    })
+.constant('SERVER', {
+  // if using local server
+  //url: 'http://localhost:3000'
+
+  // if using external server
+  url: 'http://sacredcowgaming.com:3001'
 })
 
-.run(function($rootScope, $ionicLoading) {
-    $rootScope.$on('loading:show', function() {
-        $ionicLoading.show({
-            template: 'Loading Content'
-        })
-    })
-
-    $rootScope.$on('loading:hide', function() {
-        $ionicLoading.hide()
-    })
-})
-
-
+.constant('GEOLOCATION', {
+  key: 'AIzaSyCEk0yJPLskR6paErBGM05I3BCVUd6O30A'
+});
 
 /*
 .run(['$state', '$rootScope', function($state, $rootScope) {

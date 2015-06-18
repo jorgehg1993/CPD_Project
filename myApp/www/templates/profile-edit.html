@@ -3,44 +3,46 @@
         <form class="form-signin" role="form" name="regForm">
             <div class="list">
                 <label class="item item-input item-input">
-                    <span class="input-label">Email Address</span>
-                    <input type="email" name="email" ng-model="user.email" placeholder="Email Address">
-                    <p ng-show="regForm.email.$invalid">Enter a valid email.</p>
+                    <span class="input-label">Username</span>
+                    <input type="text" name="username" ng-model="$root.user.username" placeholder="Username">
                 </label>
                 <label class="item item-input item-input">
-                    <span class="input-label">Password</span>
-                    <input type="password" name="password" ng-model="user.password" placeholder="Password" ng-minlength="8">
-                    <p ng-show="regForm.password.$error.minlength">Min password length is 8 characters.</p>
+                    <span class="input-label">First name</span>
+                    <input type="text" name="first_name" ng-model="$root.user.first_name" placeholder="First Name">
+                </label>
+                <label class="item item-input item-input">
+                    <span class="input-label">Last name</span>
+                    <input type="text" name="last_name" ng-model="$root.user.last_name" placeholder="Last name">
                 </label>
                 <label class="item item-input item-input">
                     <span class="input-label">Address</span>
-                    <input type="text" name="address" ng-model="user.address" placeholder="Address">
+                    <input type="text" name="address" ng-model="$root.user.address" placeholder="Address">
                 </label>
                 <label class="item item-input item-input">
                     <span class="input-label">City</span>
-                    <input type="text" name="city" ng-model="user.city" placeholder="City">
+                    <input type="text" name="city" ng-model="$root.user.city" placeholder="City">
                 </label>
                 <label class="item item-input item-input">
                     <span class="input-label">State</span>
-                    <input type="text" name="state" ng-model="user.state" placeholder="State">
+                    <input type="text" name="state" ng-model="$root.user.state" placeholder="State">
                 </label>
                 <label class="item item-input item-select">
                     <div class="input-label">Country</div>
-                    <select ng-model="selectedCountry" ng-options="country.name for country in countries">
+                    <select ng-model="$root.user.country" ng-options="country.name as country.name for country in countries">
+                        <option value="">Select a country</option>
                     </select>
                 </label>
                 <label class="item item-input item-input">
                     <span class="input-label">Zip Code</span>
-                    <input type="text" name="zipcode" ng-model="user.zipcode" placeholder="Zip Code">
+                    <input type="text" name="zipcode" ng-model="$root.user.zipcode" placeholder="Zip Code">
                 </label>
                 <label class="item item-input item-input">
                     <span class="input-label">Phone number</span>
-                    <input type="text" name="phone" ng-model="user.phone" placeholder="Phone number">
+                    <input type="text" name="phone" ng-model="$root.user.phone" placeholder="Phone number">
                 </label>
             </div>
-            <p style="color:red;" ng-show="regError">{{regErrorMessage}}</p>
-            <button class="button button-block button-calm" ng-click="SignUp()" ng-disabled="!user.email || !user.password || !user.address || !user.zipcode || !user.city">
-                Register
+            <button class="button button-block button-calm" ng-click="saveChanges()">
+                Save changes
             </button>
         </form>
     </ion-content>

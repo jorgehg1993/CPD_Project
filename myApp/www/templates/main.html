@@ -14,13 +14,13 @@
         </ion-header-bar>
         <ion-content class="has-header">
             <ion-list>
-                <ion-item nav-clear menu-close class="item item-avatar" href="#/app/myProfile">
-                    <img src="img/avatars/avatar.jpg">
-                    <h2>Hi User</h2>
+                <ion-item nav-clear menu-close ng-show="$root.logged" class="item item-avatar" href="#/app/myProfile">
+                    <img ng-src="{{profileImg}}">
+                    <h2>{{$root.user.username}}</h2>
                     <p>Welcome to Ionizer</p>
                 </ion-item>
 
-                <ion-item nav-clear menu-close class="item-icon-left" href="#/app/login">
+                <ion-item ng-hide="$root.logged" nav-clear menu-close class="item-icon-left" href="#/app/login">
                     <i class="icon ion-person"></i>
                     Login | Register
                 </ion-item>
@@ -49,10 +49,11 @@
                     <i class="icon ion-information-circled"></i>
                     About
                 </ion-item>
+                <ion-item nav-clear ng-show="$root.logged" menu-close ng-click="logOut()" class="item-icon-left">
+                    <i class="icon ion-log-out"></i>
+                    Log-out
+                </ion-item>
             </ion-list>
         </ion-content>
-        <ion-footer-bar class="bar-calm">
-            <div class="title">Log-out</div>
-        </ion-footer-bar>
     </ion-side-menu>
 </ion-side-menus>

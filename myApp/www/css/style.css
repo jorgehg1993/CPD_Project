@@ -78,3 +78,18 @@
 .item-calm p {
     color: #fff;
 }
+
+.msg-container {
+    height: 10em;
+    position: relative
+}
+
+.msg-container h2{
+    color: #a3a3a3;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%) 
+}
