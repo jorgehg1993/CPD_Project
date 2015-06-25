@@ -4,9 +4,18 @@ var Schema = mongoose.Schema;
 
 // set up a mongoose model
 var userSchema =  mongoose.Schema({ 
-	username: { type: String, unique: true },
-	email: { type: String, unique: true }, 
-	password: String, 
+	local: {
+		password: String,
+		passwordCreated: Boolean
+	},
+	facebook: {
+		facebookId: {type: String, sparse: true},
+		fbAccountLinked: Boolean
+	},
+	username: { type: String, sparse: true },
+	email: { type: String, unique: true, required: true }, 
+	first_name: String,
+	last_name: String,
 	address: String,
 	city: String,
 	state: String,
@@ -25,7 +34,7 @@ userSchema.methods.generateHash = function(password) {
 
 // checking if password is valid
 userSchema.methods.validPassword = function(password) {
-    return bcrypt.compareSync(password, this.password);
+    return bcrypt.compareSync(password, this.local.password);
 };
 
 module.exports = mongoose.model('User', userSchema);
