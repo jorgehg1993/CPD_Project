@@ -1,4 +1,4 @@
-angular.module('ionizer', ['ionic', 'ngOpenFB', 'ngCordova', 'ionizer.controllers', 'ionizer.services', 'ionizer.searchswapscontroller', 'ionizer.myswapscontroller', 'ionizer.latestswapscontroller', 'ionizer.featuresdemocontroller'])
+angular.module('ionizer', ['ionic', 'ngOpenFB', 'ngCordova', 'ionizer.controllers', 'ionizer.services', 'ionizer.searchswapscontroller', 'ionizer.myswapscontroller', 'ionizer.latestswapscontroller', 'ionizer.featuresdemocontroller', 'ionizer.messagescontroller'])
 
 .run(function($ionicPlatform, ngFB, $window) {
     $ionicPlatform.ready(function() {
@@ -123,6 +123,16 @@ angular.module('ionizer', ['ionic', 'ngOpenFB', 'ngCordova', 'ionizer.controller
         }
     })
 
+    .state('app.searchServices.home-contact', {
+        url: '/home-contact/:receiverId',
+        views: {
+            'search': {
+                templateUrl: 'templates/search_swaps/search-contact.html',
+                controller: 'SearchSwapsContactsCtrl'
+            }
+        }
+    })
+
     // This state is for the Food2Fork API example, using Tabs
     .state('app.myServices', {
         url: '/myServices',
@@ -178,12 +188,12 @@ angular.module('ionizer', ['ionic', 'ngOpenFB', 'ngCordova', 'ionizer.controller
         }
     })
 
-    .state('app.contactedServices', {
-        url: '/contactedServices',
+    .state('app.messages', {
+        url: '/messages',
         abstract: true,
         views: {
             'menuContent': {
-                templateUrl: 'templates/contactedServices.html'
+                templateUrl: 'templates/messages/messages-main.html'
             }
         }
     })
@@ -191,23 +201,23 @@ angular.module('ionizer', ['ionic', 'ngOpenFB', 'ngCordova', 'ionizer.controller
     // Each tab has its own nav history stack:
 
     // state for the Home Page
-    .state('app.contactedServices.home', {
-        url: '/home',
+    .state('app.messages.received', {
+        url: '/received',
         views: {
-            'contactedServices': {
-                templateUrl: 'templates/contactedServices-home.html',
-                controller: 'ContactedServicesCtrl'
+            'messagesReceived': {
+                templateUrl: 'templates/messages/messages-received.html',
+                controller: 'MessagesReceivedCtrl'
             }
         }
     })
 
     // state for the detail page of Home Page using an reusable Controller & Template
-    .state('app.contactedServices.home-detail', {
-        url: '/home-detail/:dataID',
+    .state('app.messages.sent', {
+        url: '/sent',
         views: {
-            'contactedServices': {
-                templateUrl: 'templates/contactedServices-detail.html',
-                controller: 'ContactedServicesDetailCtrl'
+            'messagesSent': {
+                templateUrl: 'templates/messages/messages-sent.html',
+                controller: 'MessagesSentCtrl'
             }
         }
     })
