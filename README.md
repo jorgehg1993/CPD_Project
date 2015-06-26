@@ -1,6 +1,4 @@
-# Cross-Platform Development Project
-
-This repository contains the code for the Cross-Platform Development Project 
+# Swapper - The services exchange app
 
 ## Instructions
 
